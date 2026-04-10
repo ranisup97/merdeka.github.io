@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>Merdeka Apps</title>
@@ -12,23 +12,6 @@
   <a id="appstore" href="https://apps.apple.com/us/app/merdeka-apps/id6756284725">
     Download di App Store
   </a>
-
-  <!-- <script>
-    const path = window.location.pathname; // /ratingCarpool
-    const ua = navigator.userAgent;
-
-    // Coba buka app dengan custom scheme sebagai fallback
-    window.location = `merdekaapp:/${path}`;
-
-    // Kalau app tidak ada, arahkan ke store setelah 2.5 detik
-    setTimeout(() => {
-      if (/android/i.test(ua)) {
-        window.location = 'https://play.google.com/store/apps/details?id=com.mdka.merdekaapps';
-      } else if (/iphone|ipad/i.test(ua)) {
-        window.location = 'https://apps.apple.com/app/idXXXXXXXX';
-      }
-    }, 2500);
-  </script> -->
 
   <script>
   const path = window.location.pathname;
@@ -45,5 +28,332 @@
     }
   }, 2000);
 </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merdeka Apps</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 60%, #CBD5E1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 24px 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 40px 32px 36px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 4px 32px rgba(100, 116, 139, 0.13), 0 1px 4px rgba(100,116,139,0.08);
+      animation: fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .icon-wrap {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #64748B 0%, #94A3B8 100%);
+      border-radius: 20px;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeUp 0.55s 0.05s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    .icon-wrap svg {
+      width: 36px;
+      height: 36px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1E293B;
+      text-align: center;
+      letter-spacing: -0.3px;
+      animation: fadeUp 0.55s 0.1s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #64748B;
+      text-align: center;
+      margin-top: 8px;
+      line-height: 1.6;
+      animation: fadeUp 0.55s 0.15s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    .status-bar {
+      margin: 24px 0 0;
+      background: #F1F5F9;
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: fadeUp 0.55s 0.2s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #94A3B8;
+      flex-shrink: 0;
+      transition: background 0.4s;
+    }
+    .status-dot.active { background: #22C55E; animation: pulse 1.5s infinite; }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+      50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+    }
+
+    .status-text {
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .countdown {
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .divider {
+      height: 1px;
+      background: #E2E8F0;
+      margin: 24px 0;
+      animation: fadeUp 0.55s 0.25s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeUp 0.55s 0.3s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 20px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:hover  { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(100,116,139,0.18); }
+    .btn:active { transform: scale(0.98); }
+
+    .btn-android {
+      background: #1E293B;
+      color: #ffffff;
+    }
+
+    .btn-ios {
+      background: #F1F5F9;
+      color: #1E293B;
+      border: 1.5px solid #CBD5E1;
+    }
+
+    .btn svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .logos-section {
+      margin-top: 32px;
+      animation: fadeUp 0.55s 0.38s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    .logos-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #94A3B8;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .logo-pill {
+      background: #ffffff;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 10px 16px;
+      box-shadow: 0 2px 8px rgba(100,116,139,0.09);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 52px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .logo-pill:hover {
+      box-shadow: 0 4px 16px rgba(100,116,139,0.16);
+      transform: translateY(-1px);
+    }
+    .logo-pill img {
+      height: 28px;
+      max-width: 120px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .footer-note {
+      font-size: 12px;
+      color: #94A3B8;
+      text-align: center;
+      margin-top: 28px;
+      line-height: 1.6;
+      animation: fadeUp 0.55s 0.45s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    @media (max-width: 400px) {
+      .card { padding: 32px 20px 28px; }
+      .title { font-size: 22px; }
+      .logos-row { gap: 10px; }
+      .logo-pill { padding: 8px 12px; height: 46px; }
+      .logo-pill img { height: 24px; max-width: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="icon-wrap">
+    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+  </div>
+
+  <h1 class="title">Merdeka Apps</h1>
+  <p class="subtitle" id="subtitle-text">Mendeteksi perangkat Anda<br>dan menyiapkan pengalihan&hellip;</p>
+
+  <div class="status-bar">
+    <div class="status-dot" id="status-dot"></div>
+    <span class="status-text" id="status-text">Menghubungkan ke aplikasi<span class="countdown" id="countdown"> (2s)</span></span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="btn-group">
+    <a id="btn-android" class="btn btn-android" href="https://play.google.com/store/apps/details?id=com.mdka.merdekaapps" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.341L5.747 2.907A1 1 0 004 3.713v16.574a1 1 0 001.747.806l11.776-12.434a1 1 0 000-1.318z"/><path d="M20.16 10.56l-2.934-1.694-2.72 2.134 2.72 2.134 2.933-1.695a.8.8 0 000-1.38z"/></svg>
+      Download di Play Store
+    </a>
+    <a id="btn-ios" class="btn btn-ios" href="https://apps.apple.com/us/app/merdeka-apps/id6756284725" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download di App Store
+    </a>
+  </div>
+
+  <div class="logos-section">
+    <p class="logos-label">Merdeka Group</p>
+    <div class="logos-row">
+      <div class="logo-pill">
+        <img src="logo_merdeka.png" alt="Merdeka Copper Gold" />
+      </div>
+      <div class="logo-pill">
+        <img src="logo_emas.png" alt="Merdeka Gold Resources" />
+      </div>
+      <div class="logo-pill">
+        <img src="logo_merdeka_battery.png" alt="Merdeka Battery Materials" />
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-note" id="footer-note">
+    Pengalihan otomatis dalam beberapa detik.<br>
+    Gunakan tombol di atas jika tidak otomatis.
+  </p>
+
+</div>
+
+<script>
+  const ua = navigator.userAgent;
+  const isAndroid = /android/i.test(ua);
+  const isIOS = /iphone|ipad|ipod/i.test(ua);
+  const path = window.location.pathname;
+  const dot = document.getElementById('status-dot');
+  const statusText = document.getElementById('status-text');
+  const countdownEl = document.getElementById('countdown');
+  const subtitleEl = document.getElementById('subtitle-text');
+  const footerEl = document.getElementById('footer-note');
+
+  let seconds = 2;
+
+  function updateCountdown() {
+    if (seconds > 0) {
+      countdownEl.textContent = ' (' + seconds + 's)';
+      seconds--;
+      setTimeout(updateCountdown, 1000);
+    } else {
+      countdownEl.textContent = '';
+      dot.classList.add('active');
+      statusText.innerHTML = 'Mengalihkan ke toko aplikasi&hellip;';
+      footerEl.textContent = 'Sedang membuka toko aplikasi…';
+
+      if (isAndroid) {
+        window.location.href = 'merdekaapp://' + path.replace('/', '');
+        setTimeout(function() {
+          window.location.href = 'https://play.google.com/store/apps/details?id=com.mdka.merdekaapps';
+        }, 1500);
+      } else if (isIOS) {
+        window.location.href = 'merdekaapp://' + path.replace('/', '');
+        setTimeout(function() {
+          window.location.href = 'https://apps.apple.com/us/app/merdeka-apps/id6756284725';
+        }, 1500);
+      } else {
+        dot.classList.add('active');
+        statusText.innerHTML = 'Buka di perangkat mobile Anda';
+        footerEl.textContent = 'Halaman ini dirancang untuk perangkat mobile.';
+      }
+    }
+  }
+
+  if (!isAndroid && !isIOS) {
+    countdownEl.textContent = '';
+    statusText.innerHTML = 'Gunakan perangkat mobile untuk redirect otomatis';
+    subtitleEl.innerHTML = 'Scan atau buka halaman ini<br>dari smartphone Anda.';
+    footerEl.textContent = 'Redirect otomatis hanya tersedia di Android & iOS.';
+  } else {
+    updateCountdown();
+  }
+</script>
+
 </body>
 </html>
